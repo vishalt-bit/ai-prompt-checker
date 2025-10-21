@@ -1,6 +1,6 @@
 // Replace with your Hugging Face API key
-const HF_API_KEY = "YOUR_HUGGINGFACE_API_KEY";
-const API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-mnli";
+const HF_API_KEY = "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";
+const API_URL = "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";
 
 const promptInput = document.getElementById("prompt");
 const resultEl = document.getElementById("result");
@@ -57,3 +57,4 @@ promptInput.addEventListener("keydown", (e) => {
     checkBtn.click();
   }
 });
+
