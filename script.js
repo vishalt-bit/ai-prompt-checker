@@ -1,6 +1,6 @@
-// Replace with your Hugging Face API key
+// Hugging Face API token
 const HF_API_KEY = "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";
-const API_URL = "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";
+const API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-mnli";
 
 const promptInput = document.getElementById("prompt");
 const resultEl = document.getElementById("result");
@@ -9,7 +9,7 @@ const loadingEl = document.getElementById("loading");
 const pingSound = document.getElementById("ping");
 const appBox = document.getElementById("app");
 
-// Function to check prompt
+// Check button click
 checkBtn.addEventListener("click", async () => {
   const text = promptInput.value.trim();
   if (!text) return alert("Please enter a prompt.");
@@ -21,9 +21,15 @@ checkBtn.addEventListener("click", async () => {
 
   try {
     const response = await fetch(API_URL, {
-      headers: { "Authorization": `Bearer ${HF_API_KEY}`, "Content-Type": "application/json" },
+      headers: {
+        "Authorization": `Bearer ${HF_API_KEY}`,
+        "Content-Type": "application/json"
+      },
       method: "POST",
-      body: JSON.stringify({ inputs: text, parameters: { candidate_labels: ["create", "guide"] } })
+      body: JSON.stringify({
+        inputs: text,
+        parameters: { candidate_labels: ["create", "guide"] }
+      })
     });
 
     const data = await response.json();
@@ -57,4 +63,3 @@ promptInput.addEventListener("keydown", (e) => {
     checkBtn.click();
   }
 });
-
